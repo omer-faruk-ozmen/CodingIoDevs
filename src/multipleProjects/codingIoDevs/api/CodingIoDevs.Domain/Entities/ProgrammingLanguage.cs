@@ -14,7 +14,7 @@ namespace CodingIoDevs.Domain.Entities
         public ProgrammingLanguage()
         { }
 
-        public ProgrammingLanguage(Guid id,string name):this()
+        public ProgrammingLanguage(Guid id, string name) : this()
         {
             Id = id;
             Name = name;
