@@ -18,6 +18,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\corePackages\Core.CrossCuttingCencerns\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
 		<ProjectReference Include="..\CodingIoDevs.Persistence\CodingIoDevs.Persistence.csproj" />
 	</ItemGroup>
 
