@@ -13,14 +13,18 @@ public interface IRepository<T> : IQuery<T> where T : Entity
         Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
         int index = 0, int size = 10,
         bool enableTracking = true);
-
     IPaginate<T> GetListByDynamic(Dynamic.Dynamic dynamic,
         Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
         int index = 0, int size = 10, bool enableTracking = true);
 
+
     T Add(T entity);
+    int Add(IEnumerable<T> entities);
     T Update(T entity);
-    T Delete(T entity);
+    int AddOrUpdate(T entity);
+    int Delete(T entity);
+    int Delete(Guid id);
+    bool DeleteRange(Expression<Func<T, bool>> predicate);
 
 
 }

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CodingIoDevs.Application.Features.ProgrammingLanguages.Queries.GetListProgrammingLanguage;
 using CodingIoDevs.Application.Services.Repositories;
 using CodingIoDevs.Domain.Entities;
+using Core.Application.Requests;
 using Core.Persistence.Paging;
 
 namespace CodingIoDevs.Application.Features.ProgrammingLanguages.Rules
@@ -22,9 +24,23 @@ namespace CodingIoDevs.Application.Features.ProgrammingLanguages.Rules
         {
             IPaginate<ProgrammingLanguage> result =
                 await _programmingLanguageRepository.GetListAsync(b => b.Name == name);
-
+            //Todo Exception Handle
             if (result.Items.Any()) throw new Exception("Language name exists");
         }
+
+        public void ProgrammingLanguageShouldExistWhenRequested(ProgrammingLanguage language)
+        {
+            if (language == null) throw new Exception("Requested language does not exists");
+        }
+
+        public void WillBeDoneIfPageSizeIsZero(PageRequest pageRequest)
+        {
+            if (pageRequest.PageSize == 0)
+                pageRequest.PageSize = 10;
+
+        }
+
+
 
     }
 }

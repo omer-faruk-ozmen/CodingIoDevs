@@ -10,6 +10,10 @@ namespace CodingIoDevs.Persistence.Contexts
 {
     public class SeedData
     {
+
+        //Todo Fake Data will be created. With Bogus! or similar
+
+
         private static List<ProgrammingLanguage> GetLanguages()
         {
             var result = new List<ProgrammingLanguage>()

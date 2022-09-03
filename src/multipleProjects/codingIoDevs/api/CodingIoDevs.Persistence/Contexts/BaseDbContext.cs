@@ -29,12 +29,6 @@ namespace CodingIoDevs.Persistence.Contexts
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.Name).HasColumnName("Name");
             });
-
-            //ProgrammingLanguage[] programmingLanguageSeeds = { new(Guid.NewGuid(), "C#"), new(Guid.NewGuid(), "Java") };
-
-            //modelBuilder.Entity<ProgrammingLanguage>().HasData(programmingLanguageSeeds);
-
-
         }
     }
 }

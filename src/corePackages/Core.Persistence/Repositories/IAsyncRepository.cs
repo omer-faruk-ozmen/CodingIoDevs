@@ -23,9 +23,18 @@ namespace Core.Persistence.Repositories
             Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
             int index = 0, int size = 10, bool enableTracking = true,
             CancellationToken cancellationToken = default);
-
         Task<T> AddAsync(T entity);
+        Task<int> AddAsync(IEnumerable<T> entities);
         Task<T> UpdateAsync(T entity);
-        Task<T> DeleteAsync(T entity);
+        Task<int> AddOrUpdateAsync(T entity);
+        Task<int> DeleteAsync(T entity);
+        Task<int> DeleteAsync(Guid id);
+        Task<bool> DeleteRangeAsync(Expression<Func<T, bool>> predicate);
+
+        Task BulkDeleteById(IEnumerable<Guid> ids);
+        Task BulkDelete(Expression<Func<T, bool>> predicate);
+        Task BulkDelete(IEnumerable<T> entities);
+        Task BulkUpdate(IEnumerable<T> entities);
+        Task BulkAdd(IEnumerable<T> entities);
     }
 }
