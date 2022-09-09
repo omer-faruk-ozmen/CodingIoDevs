@@ -4,20 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Persistence.Repositories
+namespace Core.Persistence.Repositories;
+
+public class Entity
 {
-    public class Entity
+    public Guid Id { get; set; }
+
+    public Entity()
     {
-        public Guid Id { get; set; }
-
-        public Entity()
-        {
             
-        }
+    }
 
-        public Entity(Guid id) :this()
-        {
-            Id = id;
-        }
+    public Entity(Guid id) :this()
+    {
+        Id = id;
     }
 }

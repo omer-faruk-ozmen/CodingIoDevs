@@ -5,19 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodingIoDevs.Domain.Entities
+namespace CodingIoDevs.Domain.Entities;
+
+public class ProgrammingLanguage : Entity
 {
-    public class ProgrammingLanguage : Entity
+    public ProgrammingLanguage()
+    { }
+
+    public ProgrammingLanguage(Guid id, string name) 
     {
-        public string Name { get; set; }
-
-        public ProgrammingLanguage()
-        { }
-
-        public ProgrammingLanguage(Guid id, string name) : this()
-        {
-            Id = id;
-            Name = name;
-        }
+        Id = id;
+        Name = name;
     }
+    public string Name { get; set; }
+    public virtual ICollection<Framework> Frameworks { get; set; }
+
+
 }

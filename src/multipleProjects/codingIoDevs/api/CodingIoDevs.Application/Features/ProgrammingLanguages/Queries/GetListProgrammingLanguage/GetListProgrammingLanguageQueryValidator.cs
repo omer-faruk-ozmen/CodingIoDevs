@@ -6,14 +6,13 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 
-namespace CodingIoDevs.Application.Features.ProgrammingLanguages.Queries.GetListProgrammingLanguage
+namespace CodingIoDevs.Application.Features.ProgrammingLanguages.Queries.GetListProgrammingLanguage;
+
+public class GetListProgrammingLanguageQueryValidator : AbstractValidator<GetListProgrammingLanguageQuery>
 {
-    public class GetListProgrammingLanguageQueryValidator : AbstractValidator<GetListProgrammingLanguageQuery>
+    public GetListProgrammingLanguageQueryValidator()
     {
-        public GetListProgrammingLanguageQueryValidator()
-        {
-            RuleFor(l => l.PageRequest.Page).GreaterThanOrEqualTo(0);
-            RuleFor(l => l.PageRequest.PageSize).GreaterThanOrEqualTo(0);
-        }
+        RuleFor(l => l.PageRequest.Page).GreaterThanOrEqualTo(0);
+        RuleFor(l => l.PageRequest.PageSize).GreaterThanOrEqualTo(0);
     }
 }

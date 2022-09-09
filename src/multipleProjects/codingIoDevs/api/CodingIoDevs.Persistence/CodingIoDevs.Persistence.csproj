@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\corePackages\Core.Persistence\Core.Persistence.csproj" />
+    <ProjectReference Include="..\..\..\..\corePackages\Core.Security\Core.Security.csproj" />
     <ProjectReference Include="..\CodingIoDevs.Application\CodingIoDevs.Application.csproj" />
     <ProjectReference Include="..\CodingIoDevs.Domain\CodingIoDevs.Domain.csproj" />
   </ItemGroup>

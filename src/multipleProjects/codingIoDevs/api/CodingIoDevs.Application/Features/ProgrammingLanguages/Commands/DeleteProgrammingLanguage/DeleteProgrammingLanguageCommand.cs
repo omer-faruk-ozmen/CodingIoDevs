@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
 
-namespace CodingIoDevs.Application.Features.ProgrammingLanguages.Commands.DeleteProgrammingLanguage
+namespace CodingIoDevs.Application.Features.ProgrammingLanguages.Commands.DeleteProgrammingLanguage;
+
+public class DeleteProgrammingLanguageCommand : IRequest<bool>
 {
-    public class DeleteProgrammingLanguageCommand : IRequest<bool>
-    {
-        public Guid Id { get; set; }
-    }
+    public Guid Id { get; set; }
 }

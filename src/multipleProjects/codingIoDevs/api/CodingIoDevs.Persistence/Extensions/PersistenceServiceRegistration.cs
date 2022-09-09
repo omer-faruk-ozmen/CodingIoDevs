@@ -10,22 +10,21 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CodingIoDevs.Persistence.Extensions
+namespace CodingIoDevs.Persistence.Extensions;
+
+public static class PersistenceServiceRegistration
 {
-    public static class PersistenceServiceRegistration
+    public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
     {
-        public static IServiceCollection AddPersistenceServices(this IServiceCollection services)
-        {
-            services.AddDbContext<BaseDbContext>(options =>
-                options.UseNpgsql(Configuration.ConnectionString));
+        services.AddDbContext<BaseDbContext>(options =>
+            options.UseNpgsql(Configuration.ConnectionString));
 
-            var seedData = new SeedData();
-            seedData.SeedAsync().GetAwaiter().GetResult();
+        var seedData = new SeedData();
+        seedData.SeedAsync().GetAwaiter().GetResult();
 
-            services.AddScoped<IProgrammingLanguageRepository, ProgrammingLanguageRepository>();
+        services.AddScoped<IProgrammingLanguageRepository, ProgrammingLanguageRepository>();
 
-            return services;
+        return services;
 
-        }
     }
 }

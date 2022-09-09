@@ -8,12 +8,11 @@ using CodingIoDevs.Persistence.Contexts;
 using CodingIoDevs.Application.Services.Repositories;
 using CodingIoDevs.Domain.Entities;
 
-namespace CodingIoDevs.Persistence.Repositories
+namespace CodingIoDevs.Persistence.Repositories;
+
+public class ProgrammingLanguageRepository : EfRepositoryBase<ProgrammingLanguage, BaseDbContext>, IProgrammingLanguageRepository
 {
-    public class ProgrammingLanguageRepository : EfRepositoryBase<ProgrammingLanguage, BaseDbContext>, IProgrammingLanguageRepository
+    public ProgrammingLanguageRepository(BaseDbContext context) : base(context)
     {
-        public ProgrammingLanguageRepository(BaseDbContext context) : base(context)
-        {
-        }
     }
 }

@@ -6,9 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodingIoDevs.Application.Services.Repositories
+namespace CodingIoDevs.Application.Services.Repositories;
+
+public interface IProgrammingLanguageRepository : IAsyncRepository<ProgrammingLanguage>,IRepository<ProgrammingLanguage>
 {
-    public interface IProgrammingLanguageRepository : IAsyncRepository<ProgrammingLanguage>,IRepository<ProgrammingLanguage>
-    {
-    }
 }

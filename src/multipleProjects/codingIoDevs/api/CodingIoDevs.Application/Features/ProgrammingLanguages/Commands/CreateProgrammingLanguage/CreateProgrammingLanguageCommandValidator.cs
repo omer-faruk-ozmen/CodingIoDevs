@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 
-namespace CodingIoDevs.Application.Features.ProgrammingLanguages.Commands.CreateProgrammingLanguage
-{
-    public class CreateProgrammingLanguageCommandValidator : AbstractValidator<CreateProgrammingLanguageCommand>
-    {
+namespace CodingIoDevs.Application.Features.ProgrammingLanguages.Commands.CreateProgrammingLanguage;
 
-        public CreateProgrammingLanguageCommandValidator()
-        {
-            RuleFor(l => l.Name).NotEmpty();
-        }
+public class CreateProgrammingLanguageCommandValidator : AbstractValidator<CreateProgrammingLanguageCommand>
+{
+
+    public CreateProgrammingLanguageCommandValidator()
+    {
+        RuleFor(l => l.Name).NotEmpty();
     }
 }

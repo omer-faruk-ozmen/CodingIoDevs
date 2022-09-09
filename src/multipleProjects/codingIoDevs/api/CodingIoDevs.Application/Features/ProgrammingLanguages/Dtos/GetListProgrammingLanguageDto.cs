@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodingIoDevs.Application.Features.ProgrammingLanguages.Dtos
+namespace CodingIoDevs.Application.Features.ProgrammingLanguages.Dtos;
+
+public class GetListProgrammingLanguageDto
 {
-    public class GetListProgrammingLanguageDto
-    {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string Name { get; set; }
 }

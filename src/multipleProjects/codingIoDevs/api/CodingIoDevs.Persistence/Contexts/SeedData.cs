@@ -6,47 +6,46 @@ using System.Threading.Tasks;
 using CodingIoDevs.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CodingIoDevs.Persistence.Contexts
+namespace CodingIoDevs.Persistence.Contexts;
+
+public class SeedData
 {
-    public class SeedData
+
+    //Todo Fake Data will be created. With Bogus! or similar
+
+
+    private static List<ProgrammingLanguage> GetLanguages()
     {
-
-        //Todo Fake Data will be created. With Bogus! or similar
-
-
-        private static List<ProgrammingLanguage> GetLanguages()
+        var result = new List<ProgrammingLanguage>()
         {
-            var result = new List<ProgrammingLanguage>()
-            {
-                new ProgrammingLanguage(Guid.NewGuid(), "C#"),
-                new ProgrammingLanguage(Guid.NewGuid(), "Java"),
-                new ProgrammingLanguage(Guid.NewGuid(), "Python"),
-            };
+            new ProgrammingLanguage(Guid.NewGuid(), "C#"),
+            new ProgrammingLanguage(Guid.NewGuid(), "Java"),
+            new ProgrammingLanguage(Guid.NewGuid(), "Python"),
+        };
 
 
-            return result;
+        return result;
+    }
+
+    public async Task SeedAsync()
+    {
+        var dbContextBuilder = new DbContextOptionsBuilder();
+
+
+
+        dbContextBuilder.UseNpgsql(Configuration.ConnectionString);
+
+        var context = new BaseDbContext(dbContextBuilder.Options);
+
+        if (context.ProgrammingLanguages.Any())
+        {
+            await Task.CompletedTask;
+            return;
         }
 
-        public async Task SeedAsync()
-        {
-            var dbContextBuilder = new DbContextOptionsBuilder();
+        var languages = GetLanguages();
+        await context.ProgrammingLanguages.AddRangeAsync(languages);
 
-
-
-            dbContextBuilder.UseNpgsql(Configuration.ConnectionString);
-
-            var context = new BaseDbContext(dbContextBuilder.Options);
-
-            if (context.ProgrammingLanguages.Any())
-            {
-                await Task.CompletedTask;
-                return;
-            }
-
-            var languages = GetLanguages();
-            await context.ProgrammingLanguages.AddRangeAsync(languages);
-
-            await context.SaveChangesAsync();
-        }
+        await context.SaveChangesAsync();
     }
 }
