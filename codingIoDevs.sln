@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Application", "src\cor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.CrossCuttingConcerns", "src\corePackages\Core.CrossCuttingCencerns\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj", "{98764581-7367-41C4-914F-86D01F8A0F2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Security", "src\corePackages\Core.Security\Core.Security.csproj", "{495FA51C-677E-4718-BFD3-400BBC510487}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Security", "src\corePackages\Core.Security\Core.Security.csproj", "{495FA51C-677E-4718-BFD3-400BBC510487}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -4,7 +4,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using CodingIoDevs.Application.Features.Auth.Rules;
+using CodingIoDevs.Application.Features.Frameworks.Rules;
 using CodingIoDevs.Application.Features.ProgrammingLanguages.Rules;
+using CodingIoDevs.Application.Features.UserLinks.Rules;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using MediatR;
@@ -20,6 +23,9 @@ public static class ApplicationServiceRegistration
         services.AddMediatR(Assembly.GetExecutingAssembly());
 
         services.AddScoped<ProgrammingLanguageBusinessRules>();
+        services.AddScoped<AuthBusinessRules>();
+        services.AddScoped<FrameworkBusinessRules>();
+        services.AddScoped<UserLinkBusinessRules>();
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 

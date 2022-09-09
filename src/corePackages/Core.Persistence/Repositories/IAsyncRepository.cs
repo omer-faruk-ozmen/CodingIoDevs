@@ -36,4 +36,5 @@ public interface IAsyncRepository<T> : IQuery<T> where T : Entity
     Task BulkDelete(IEnumerable<T> entities);
     Task BulkUpdate(IEnumerable<T> entities);
     Task BulkAdd(IEnumerable<T> entities);
+    
 }

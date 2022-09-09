@@ -24,7 +24,7 @@ public class UpdateProgrammingLanguageCommandHandler : IRequestHandler<UpdatePro
     {
         await _programmingLanguageBusinessRules.LanguageNameCanNotBeDuplicatedWhenInserted(request.Name);
 
-        ProgrammingLanguage dbLanguage = await _programmingLanguageRepository.GetAsync(l => l.Id == request.Id);
+        ProgrammingLanguage? dbLanguage = await _programmingLanguageRepository.GetAsync(l => l.Id == request.Id);
 
         _programmingLanguageBusinessRules.ProgrammingLanguageShouldExistWhenRequested(dbLanguage);
 

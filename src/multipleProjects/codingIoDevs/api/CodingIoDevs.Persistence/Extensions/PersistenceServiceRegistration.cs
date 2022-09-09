@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using CodingIoDevs.Application.Services.Repositories;
 using CodingIoDevs.Persistence.Contexts;
 using CodingIoDevs.Persistence.Repositories;
+using Core.Security.JWT;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,10 @@ public static class PersistenceServiceRegistration
         seedData.SeedAsync().GetAwaiter().GetResult();
 
         services.AddScoped<IProgrammingLanguageRepository, ProgrammingLanguageRepository>();
+        services.AddScoped<IFrameworkRepository, FrameworkRepository>();
+        services.AddScoped<IUserLinkRepository, UserLinkRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
+        
 
         return services;
 

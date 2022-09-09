@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\ProgrammingLanguages\Queries\GetListProgrammingLanguageByDynamicQuery\**" />
+    <EmbeddedResource Remove="Features\ProgrammingLanguages\Queries\GetListProgrammingLanguageByDynamicQuery\**" />
+    <None Remove="Features\ProgrammingLanguages\Queries\GetListProgrammingLanguageByDynamicQuery\**" />
+  </ItemGroup>
+
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\..\corePackages\Core.Application\Core.Application.csproj" />
     <ProjectReference Include="..\..\..\..\corePackages\Core.CrossCuttingCencerns\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
     <ProjectReference Include="..\..\..\..\corePackages\Core.Persistence\Core.Persistence.csproj" />
@@ -17,6 +24,10 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.1" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Features\Auth\Queries\" />
   </ItemGroup>
 
 </Project>

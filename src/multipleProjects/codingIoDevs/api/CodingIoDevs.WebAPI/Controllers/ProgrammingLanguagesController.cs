@@ -4,8 +4,10 @@ using CodingIoDevs.Application.Features.ProgrammingLanguages.Commands.UpdateProg
 using CodingIoDevs.Application.Features.ProgrammingLanguages.Dtos;
 using CodingIoDevs.Application.Features.ProgrammingLanguages.Models;
 using CodingIoDevs.Application.Features.ProgrammingLanguages.Queries.GetByIdProgrammingLanguage;
+using CodingIoDevs.Application.Features.ProgrammingLanguages.Queries.GetListLanguageByDynamicQuery;
 using CodingIoDevs.Application.Features.ProgrammingLanguages.Queries.GetListProgrammingLanguage;
 using Core.Application.Requests;
+using Core.Persistence.Dynamic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -26,6 +28,20 @@ public class ProgrammingLanguagesController : BaseController
             PageRequest = pageRequest
         };
         GetListProgrammingLanguageModel result = await Mediator.Send(getListProgrammingLanguageQuery);
+
+        return Ok(result);
+    }
+
+    [HttpPost("GetList/ByDynamic")]
+    public async Task<IActionResult> GetListByDynamic([FromQuery] PageRequest pageRequest, [FromBody] Dynamic dynamic)
+    {
+
+        GetListLanguageDynamicQuery getListLanguageDynamicQuery = new()
+        {
+            PageRequest = pageRequest,
+            Dynamic = dynamic
+        };
+        GetListProgrammingLanguageModel result = await Mediator.Send(getListLanguageDynamicQuery);
 
         return Ok(result);
     }
