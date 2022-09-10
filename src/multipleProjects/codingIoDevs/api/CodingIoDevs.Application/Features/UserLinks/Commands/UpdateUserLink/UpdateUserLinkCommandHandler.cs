@@ -25,15 +25,15 @@ public class UpdateUserLinkCommandHandler : IRequestHandler<UpdateUserLinkComman
 
     public async Task<Guid> Handle(UpdateUserLinkCommand request, CancellationToken cancellationToken)
     {
-        var claims = _httpContextAccessor?.HttpContext.User.Claims;
-        var claimsList = claims as Claim[] ?? claims.ToArray();
-        var userId = claimsList[0].Value;
+        Guid userId = await _userLinkBusinessRules.IdOfTheAuthenticatedUser();
 
         UserLink? dbUserLink = await _userLinkRepository.GetAsync(p => p.Id == request.Id);
 
+        _userLinkBusinessRules.UserLinkShouldExistWhenRequested(dbUserLink);
+
         _mapper.Map(request, dbUserLink);
 
-        dbUserLink.UserId = Guid.Parse(userId);
+        dbUserLink.UserId = userId;
 
         await _userLinkRepository.UpdateAsync(dbUserLink);
 

@@ -31,14 +31,14 @@ public class CreateUserLinkCommandHandler : IRequestHandler<CreateUserLinkComman
 
     public async Task<CreatedUserLinkDto> Handle(CreateUserLinkCommand request, CancellationToken cancellationToken)
     {
-        var claims = _httpContextAccessor?.HttpContext.User.Claims;
-        var claimsList = claims as Claim[] ?? claims.ToArray();
-        var userId = claimsList[0].Value;
 
+        Guid userId = await _userLinkBusinessRules.IdOfTheAuthenticatedUser();
+
+        await _userLinkBusinessRules.EachUserCanHaveOnlyOneLinkArray(userId);
 
         UserLink mappedUserLink = _mapper.Map<UserLink>(request);
 
-        mappedUserLink.UserId = Guid.Parse(userId);
+        mappedUserLink.UserId = userId;
 
         UserLink createdUserLink = await _userLinkRepository.AddAsync(mappedUserLink);
 
