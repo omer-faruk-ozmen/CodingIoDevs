@@ -43,9 +43,9 @@ namespace CodingIoDevs.Application.Features.UserLinks.Rules
                 throw new BusinessException("Links have already been created for this user. Please update the links.");
         }
 
-        public void UserLinkShouldExistWhenRequested(UserLink? dbUserLink)
+        public void UserLinkShouldExistWhenRequested(UserLink? userLink)
         {
-            if (dbUserLink == null) throw new BusinessException("Requested User link does not exists");
+            if (userLink == null) throw new BusinessException("Requested User link does not exists");
         }
     }
 }

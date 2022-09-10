@@ -20,6 +20,8 @@ namespace CodingIoDevs.Application.Features.UserLinks.Profiles
             CreateMap<UserLink, CreateUserLinkCommand>().ReverseMap();
 
             CreateMap<UserLink, UpdateUserLinkCommand>().ReverseMap();
+
+            CreateMap<UserLink, GetByIdUserLinkDto>().ReverseMap();
         }
     }
 }
