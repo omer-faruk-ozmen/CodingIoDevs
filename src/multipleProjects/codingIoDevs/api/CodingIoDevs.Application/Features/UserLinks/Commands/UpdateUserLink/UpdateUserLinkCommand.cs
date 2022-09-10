@@ -5,12 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using MediatR;
 
-namespace CodingIoDevs.Application.Features.UserLinks.Commands.UpdateUserLink
+namespace CodingIoDevs.Application.Features.UserLinks.Commands.UpdateUserLink;
+
+public class UpdateUserLinkCommand : IRequest<Guid>
 {
-    public class UpdateUserLinkCommand : IRequest<Guid>
-    {
-        public Guid Id { get; set; }
-        public string? GithubUrl { get; set; }
-        public string? LinkedInUrl { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string? GithubUrl { get; set; }
+    public string? LinkedInUrl { get; set; }
 }

@@ -24,8 +24,6 @@ public class CreateProgrammingLanguageCommandHandler : IRequestHandler<CreatePro
     {
         await _programmingLanguageBusinessRules.LanguageNameCanNotBeDuplicatedWhenInserted(request.Name);
 
-        
-
         ProgrammingLanguage mappedLanguage = _mapper.Map<ProgrammingLanguage>(request);
 
         ProgrammingLanguage createdLanguage = await _programmingLanguageRepository.AddAsync(mappedLanguage);

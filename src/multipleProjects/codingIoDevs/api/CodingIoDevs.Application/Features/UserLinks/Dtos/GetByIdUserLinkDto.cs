@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodingIoDevs.Application.Features.UserLinks.Dtos
+namespace CodingIoDevs.Application.Features.UserLinks.Dtos;
+
+public class GetByIdUserLinkDto
 {
-    public class GetByIdUserLinkDto
-    {
-        public Guid Id { get; set; }
-        public Guid UserId { get; set; }
-        public string? GithubUrl { get; set; }
-        public string? LinkedInUrl { get; set; }
-    }
+    public Guid Id { get; set; }
+    public Guid UserId { get; set; }
+    public string? GithubUrl { get; set; }
+    public string? LinkedInUrl { get; set; }
 }

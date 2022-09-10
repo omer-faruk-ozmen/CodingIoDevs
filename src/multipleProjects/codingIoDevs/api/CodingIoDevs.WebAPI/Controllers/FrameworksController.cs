@@ -9,46 +9,45 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace CodingIoDevs.WebAPI.Controllers
+namespace CodingIoDevs.WebAPI.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class FrameworksController : BaseController
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class FrameworksController : BaseController
+    [HttpGet]
+    public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
     {
-        [HttpGet]
-        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
-        {
-            GetListFrameworkQuery getListFrameworkQuery = new() { PageRequest = pageRequest };
+        GetListFrameworkQuery getListFrameworkQuery = new() { PageRequest = pageRequest };
 
-            FrameworkListModel result = await Mediator.Send(getListFrameworkQuery);
+        FrameworkListModel result = await Mediator.Send(getListFrameworkQuery);
 
-            return Ok(result);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateFrameworkCommand createFrameworkCommand)
-        {
-            CreatedFrameworkDto result = await Mediator.Send(createFrameworkCommand);
-
-            return Created("", result);
-        }
-
-        [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateFrameworkCommand updateFrameworkCommand)
-        {
-            Guid result = await Mediator.Send(updateFrameworkCommand);
-
-            return Ok(result);
-        }
-
-        [HttpDelete("{Id}")]
-        public async Task<IActionResult> Delete([FromRoute] DeleteFrameworkCommand deleteFrameworkCommand)
-        {
-            bool result = await Mediator.Send(deleteFrameworkCommand);
-
-            return Ok(result);
-        }
-
-
+        return Ok(result);
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Add([FromBody] CreateFrameworkCommand createFrameworkCommand)
+    {
+        CreatedFrameworkDto result = await Mediator.Send(createFrameworkCommand);
+
+        return Created("", result);
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> Update([FromBody] UpdateFrameworkCommand updateFrameworkCommand)
+    {
+        Guid result = await Mediator.Send(updateFrameworkCommand);
+
+        return Ok(result);
+    }
+
+    [HttpDelete("{Id}")]
+    public async Task<IActionResult> Delete([FromRoute] DeleteFrameworkCommand deleteFrameworkCommand)
+    {
+        bool result = await Mediator.Send(deleteFrameworkCommand);
+
+        return Ok(result);
+    }
+
+
 }

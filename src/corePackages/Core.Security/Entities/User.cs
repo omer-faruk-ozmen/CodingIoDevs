@@ -6,38 +6,37 @@ using System.Text;
 using System.Threading.Tasks;
 using Core.Security.Enums;
 
-namespace Core.Security.Entities
+namespace Core.Security.Entities;
+
+public class User : Entity
 {
-    public class User : Entity
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Email { get; set; }
+    public string NormalizedEmail { get; set; }
+    public byte[] PasswordSalt { get; set; }
+    public byte[] PasswordHash { get; set; }
+    public bool Status { get; set; }
+    public AuthenticatorType AuthenticatorType { get; set; }
+    public virtual ICollection<UserOperationClaim> UserOperationClaims { get; set; }
+    public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
+
+    public User()
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string NormalizedEmail { get; set; }
-        public byte[] PasswordSalt { get; set; }
-        public byte[] PasswordHash { get; set; }
-        public bool Status { get; set; }
-        public AuthenticatorType AuthenticatorType { get; set; }
-        public virtual ICollection<UserOperationClaim> UserOperationClaims { get; set; }
-        public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
+        UserOperationClaims = new HashSet<UserOperationClaim>();
+        RefreshTokens = new HashSet<RefreshToken>();
+    }
 
-        public User()
-        {
-            UserOperationClaims = new HashSet<UserOperationClaim>();
-            RefreshTokens = new HashSet<RefreshToken>();
-        }
-
-        public User(Guid id, string firstName, string lastName, string email, string normalizedEmail, byte[] passwordSalt, byte[] passwordHash, bool status, AuthenticatorType authenticatorType) : this()
-        {
-            Id = id;
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            NormalizedEmail = normalizedEmail;
-            PasswordSalt = passwordSalt;
-            PasswordHash = passwordHash;
-            Status = status;
-            AuthenticatorType = authenticatorType;
-        }
+    public User(Guid id, string firstName, string lastName, string email, string normalizedEmail, byte[] passwordSalt, byte[] passwordHash, bool status, AuthenticatorType authenticatorType) : this()
+    {
+        Id = id;
+        FirstName = firstName;
+        LastName = lastName;
+        Email = email;
+        NormalizedEmail = normalizedEmail;
+        PasswordSalt = passwordSalt;
+        PasswordHash = passwordHash;
+        Status = status;
+        AuthenticatorType = authenticatorType;
     }
 }

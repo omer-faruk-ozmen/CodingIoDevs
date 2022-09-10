@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 using CodingIoDevs.Domain.Entities;
 using Core.Persistence.Repositories;
 
-namespace CodingIoDevs.Application.Services.Repositories
+namespace CodingIoDevs.Application.Services.Repositories;
+
+public interface IFrameworkRepository : IAsyncRepository<Framework>, IRepository<Framework>
 {
-    public interface IFrameworkRepository : IAsyncRepository<Framework>, IRepository<Framework>
-    {
-    }
 }

@@ -5,14 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentValidation;
 
-namespace CodingIoDevs.Application.Features.Auth.Commands.Login
+namespace CodingIoDevs.Application.Features.Auth.Commands.Login;
+
+public class LoginUserCommandValidator : AbstractValidator<LoginUserCommand>
 {
-    public class LoginUserCommandValidator : AbstractValidator<LoginUserCommand>
+    public LoginUserCommandValidator()
     {
-        public LoginUserCommandValidator()
-        {
-            RuleFor(u => u.Email).NotEmpty();
-            RuleFor(u => u.Password).NotEmpty();
-        }
+        RuleFor(u => u.Email).NotEmpty().EmailAddress();
+        RuleFor(u => u.Password).NotEmpty().MinimumLength(8);
     }
 }

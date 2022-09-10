@@ -11,45 +11,43 @@ using Core.Persistence.Paging;
 using Core.Security.Entities;
 using Core.Security.Hashing;
 
-namespace CodingIoDevs.Application.Features.Auth.Rules
+namespace CodingIoDevs.Application.Features.Auth.Rules;
+
+public class AuthBusinessRules
 {
+    private readonly IUserRepository _userRepository;
 
-    public class AuthBusinessRules
+
+    public AuthBusinessRules(IUserRepository userRepository)
     {
-        private readonly IUserRepository _userRepository;
+        _userRepository = userRepository;
+    }
 
+    public async Task<User> UserControlCorrespondingToEmailAddress(string email)
+    {
+        User? user = await _userRepository.GetAsync(u => u.Email == email);
 
-        public AuthBusinessRules(IUserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
+        if (user == null)
+            throw new BusinessException("Email or password is incorrect!");
 
-        public async Task<User> UserControlCorrespondingToEmailAddress(string email)
-        {
-            User? user = await _userRepository.GetAsync(u => u.Email == email);
+        return user;
+    }
 
-            if (user == null)
-                throw new BusinessException("Email or password is incorrect!");
+    public async Task EmailAddressCanNotBeDuplicatedWhenInserted(string email)
+    {
+        IPaginate<User> user = await _userRepository.GetListAsync(u => u.Email == email);
 
-            return user;
-        }
-
-        public async Task EmailAddressCanNotBeDuplicatedWhenInserted(string email)
-        {
-            IPaginate<User> user = await _userRepository.GetListAsync(u => u.Email == email);
-
-            if (user.Items.Any())
-                throw new BusinessException("The email address is already registered. Please login");
-        }
+        if (user.Items.Any())
+            throw new BusinessException("The email address is already registered. Please login");
+    }
 
 
 
-        public Task PasswordVerification(string password, User user)
-        {
-            if (!HashingHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
-                throw new BusinessException("Email or password is incorrect!");
+    public Task PasswordVerification(string password, User user)
+    {
+        if (!HashingHelper.VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            throw new BusinessException("Email or password is incorrect!");
 
-            return Task.CompletedTask;
-        }
+        return Task.CompletedTask;
     }
 }

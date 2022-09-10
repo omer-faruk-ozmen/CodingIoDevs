@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Security.JWT
+namespace Core.Security.JWT;
+
+public class AccessToken
 {
-    public class AccessToken
-    {
-        public string Token { get; set; }
-        public DateTime Expiration { get; set; }
-    }
+    public string Token { get; set; }
+    public DateTime Expiration { get; set; }
 }

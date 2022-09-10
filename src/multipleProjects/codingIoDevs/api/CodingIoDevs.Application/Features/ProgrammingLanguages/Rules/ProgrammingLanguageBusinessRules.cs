@@ -29,7 +29,7 @@ public class ProgrammingLanguageBusinessRules
         if (result.Items.Any()) throw new BusinessException("Language name exists");
     }
 
-    public void ProgrammingLanguageShouldExistWhenRequested(ProgrammingLanguage language)
+    public void ProgrammingLanguageShouldExistWhenRequested(ProgrammingLanguage? language)
     {
         if (language == null) throw new BusinessException("Requested language does not exists");
     }

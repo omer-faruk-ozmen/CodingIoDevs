@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CodingIoDevs.Application.Features.Auth.Dtos
+namespace CodingIoDevs.Application.Features.Auth.Dtos;
+
+public class LoginUserDto
 {
-    public class LoginUserDto
-    {
-        public string Token { get; set; }
-        public DateTime Expiration { get; set; }
-    }
+    public string Token { get; set; }
+    public DateTime Expiration { get; set; }
 }

@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Security.Dtos
+namespace Core.Security.Dtos;
+
+public class UserForLoginDto
 {
-    public class UserForLoginDto
-    {
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string? AuthenticatorCode { get; set; }
-    }
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public string? AuthenticatorCode { get; set; }
 }
