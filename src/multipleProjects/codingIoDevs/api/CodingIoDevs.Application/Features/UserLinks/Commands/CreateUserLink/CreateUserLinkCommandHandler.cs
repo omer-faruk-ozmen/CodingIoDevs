@@ -1,10 +1,8 @@
-﻿using System.Security.Claims;
-using AutoMapper;
+﻿using AutoMapper;
 using CodingIoDevs.Application.Features.UserLinks.Dtos;
 using CodingIoDevs.Application.Features.UserLinks.Rules;
 using CodingIoDevs.Application.Services.Repositories;
 using CodingIoDevs.Domain.Entities;
-using Core.Security.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography;
 using Core.Security.Encryption;
 using Core.Security.Entities;
 using Core.Security.Extensions;
@@ -41,9 +37,18 @@ public class JwtHelper : ITokenHelper
         };
     }
 
-    public RefreshToken CreateRefreshToken(User user, string ipAddress)
+    public RefreshToken CreateRefreshToken(User user, string? ipAddress)
     {
-        throw new NotImplementedException();
+        RefreshToken refreshToken = new()
+        {
+            UserId = user.Id,
+            Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
+            Expires = DateTime.UtcNow.AddDays(7),
+            Created = DateTime.UtcNow,
+            CreatedByIp = ipAddress
+        };
+
+        return refreshToken;
     }
 
     public JwtSecurityToken CreateJwtSecurityToken(TokenOptions tokenOptions, User user,

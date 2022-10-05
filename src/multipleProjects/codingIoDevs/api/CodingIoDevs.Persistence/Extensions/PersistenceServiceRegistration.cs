@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodingIoDevs.Application.Services.Repositories;
+﻿using CodingIoDevs.Application.Services.Repositories;
 using CodingIoDevs.Persistence.Contexts;
 using CodingIoDevs.Persistence.Repositories;
-using Core.Security.JWT;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CodingIoDevs.Persistence.Extensions;
@@ -27,7 +20,9 @@ public static class PersistenceServiceRegistration
         services.AddScoped<IFrameworkRepository, FrameworkRepository>();
         services.AddScoped<IUserLinkRepository, UserLinkRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
-        
+        services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
+        services.AddScoped<IOperationClaimRepository, OperationClaimRepository>();
+        services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
         return services;
 

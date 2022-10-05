@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodingIoDevs.Application.Features.ProgrammingLanguages.Dtos;
-using CodingIoDevs.Application.Features.ProgrammingLanguages.Models;
+﻿using CodingIoDevs.Application.Features.ProgrammingLanguages.Models;
 using Core.Application.Requests;
 using MediatR;
 

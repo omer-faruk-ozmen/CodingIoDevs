@@ -2,9 +2,7 @@
 using CodingIoDevs.Application.Features.UserLinks.Commands.UpdateUserLink;
 using CodingIoDevs.Application.Features.UserLinks.Dtos;
 using CodingIoDevs.Application.Features.UserLinks.Queries.GetByIdUserLink;
-using CodingIoDevs.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodingIoDevs.WebAPI.Controllers;

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodingIoDevs.Application.Features.ProgrammingLanguages.Queries.GetListProgrammingLanguage;
-using CodingIoDevs.Application.Services.Repositories;
+﻿using CodingIoDevs.Application.Services.Repositories;
 using CodingIoDevs.Domain.Entities;
 using Core.Application.Requests;
 using Core.CrossCuttingConcerns.Exceptions;

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using CodingIoDevs.Application.Features.Auth.Rules;
 using CodingIoDevs.Application.Features.Frameworks.Rules;
 using CodingIoDevs.Application.Features.ProgrammingLanguages.Rules;
 using CodingIoDevs.Application.Features.UserLinks.Rules;
+using CodingIoDevs.Application.Services.AuthService;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using MediatR;
@@ -27,10 +23,13 @@ public static class ApplicationServiceRegistration
         services.AddScoped<FrameworkBusinessRules>();
         services.AddScoped<UserLinkBusinessRules>();
 
+
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
+
+        services.AddScoped<IAuthService, AuthManager>();
 
         return services;
     }

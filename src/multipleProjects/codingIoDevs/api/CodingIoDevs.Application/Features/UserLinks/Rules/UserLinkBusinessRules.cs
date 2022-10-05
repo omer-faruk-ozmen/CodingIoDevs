@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Security.Claims;
 using CodingIoDevs.Application.Services.Repositories;
 using CodingIoDevs.Domain.Entities;
 using Core.CrossCuttingConcerns.Exceptions;
-using Core.Persistence.Paging;
 using Microsoft.AspNetCore.Http;
 
 namespace CodingIoDevs.Application.Features.UserLinks.Rules;

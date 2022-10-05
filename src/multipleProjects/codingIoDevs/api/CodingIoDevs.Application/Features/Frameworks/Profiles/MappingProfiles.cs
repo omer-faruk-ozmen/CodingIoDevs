@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using CodingIoDevs.Application.Features.Frameworks.Commands.CreateFramework;
 using CodingIoDevs.Application.Features.Frameworks.Commands.UpdateFramework;
 using CodingIoDevs.Application.Features.Frameworks.Dtos;

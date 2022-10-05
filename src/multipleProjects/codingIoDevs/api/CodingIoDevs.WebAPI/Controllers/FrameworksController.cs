@@ -5,9 +5,7 @@ using CodingIoDevs.Application.Features.Frameworks.Dtos;
 using CodingIoDevs.Application.Features.Frameworks.Models;
 using CodingIoDevs.Application.Features.Frameworks.Queries.GetListFramework;
 using Core.Application.Requests;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace CodingIoDevs.WebAPI.Controllers;
 

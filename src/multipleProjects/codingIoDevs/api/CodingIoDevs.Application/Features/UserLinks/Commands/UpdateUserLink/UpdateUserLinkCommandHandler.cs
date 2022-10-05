@@ -4,7 +4,6 @@ using CodingIoDevs.Application.Services.Repositories;
 using CodingIoDevs.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
 
 namespace CodingIoDevs.Application.Features.UserLinks.Commands.UpdateUserLink;
 

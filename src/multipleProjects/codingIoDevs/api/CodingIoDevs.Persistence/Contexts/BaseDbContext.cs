@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodingIoDevs.Domain.Entities;
+﻿using CodingIoDevs.Domain.Entities;
 using Core.Security.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace CodingIoDevs.Persistence.Contexts;
 
@@ -23,7 +17,7 @@ public class BaseDbContext : DbContext
     public DbSet<OperationClaim> OperationClaims { get; set; }
     public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
     public DbSet<OtpAuthenticator> OtpAuthenticators { get; set; }
-
+    public DbSet<RefreshToken> RefreshTokens { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

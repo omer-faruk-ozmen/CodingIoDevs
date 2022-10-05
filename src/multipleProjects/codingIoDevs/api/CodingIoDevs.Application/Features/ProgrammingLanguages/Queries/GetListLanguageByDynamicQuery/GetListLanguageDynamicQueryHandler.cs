@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using CodingIoDevs.Application.Features.Frameworks.Models;
 using CodingIoDevs.Application.Features.ProgrammingLanguages.Models;
 using CodingIoDevs.Application.Services.Repositories;
 using CodingIoDevs.Domain.Entities;
 using Core.Persistence.Paging;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace CodingIoDevs.Application.Features.ProgrammingLanguages.Queries.GetListLanguageByDynamicQuery;
 

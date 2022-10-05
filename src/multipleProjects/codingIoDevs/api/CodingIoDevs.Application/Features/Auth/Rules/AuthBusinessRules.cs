@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.PortableExecutable;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-using CodingIoDevs.Application.Services.Repositories;
+﻿using CodingIoDevs.Application.Services.Repositories;
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.Persistence.Paging;
 using Core.Security.Entities;
