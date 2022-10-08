@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <Folder Include="Features\Auth\Queries\" />
+    <Folder Include="Features\OperationClaims\Rules\" />
+    <Folder Include="Features\UserOperationClaims\Rules\" />
   </ItemGroup>
 
 </Project>
