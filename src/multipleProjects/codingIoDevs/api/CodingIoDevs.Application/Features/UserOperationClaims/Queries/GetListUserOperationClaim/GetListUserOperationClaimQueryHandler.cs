@@ -1,11 +1,9 @@
 ﻿using AutoMapper;
-using CodingIoDevs.Application.Features.UserOperationClaims.Dtos;
 using CodingIoDevs.Application.Features.UserOperationClaims.Models;
 using CodingIoDevs.Application.Services.Repositories;
 using Core.Persistence.Paging;
 using Core.Security.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CodingIoDevs.Application.Features.UserOperationClaims.Queries.GetListUserOperationClaim;

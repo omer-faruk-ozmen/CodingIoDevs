@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CodingIoDevs.Application.Services.Repositories;
+﻿using CodingIoDevs.Application.Services.Repositories;
 using Core.Persistence.Paging;
 using Core.Security.Entities;
 using Core.Security.JWT;

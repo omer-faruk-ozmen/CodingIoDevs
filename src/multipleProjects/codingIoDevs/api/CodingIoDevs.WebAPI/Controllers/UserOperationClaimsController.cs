@@ -5,62 +5,60 @@ using CodingIoDevs.Application.Features.UserOperationClaims.Models;
 using CodingIoDevs.Application.Features.UserOperationClaims.Queries.GetByUserIdUserOperationClaim;
 using CodingIoDevs.Application.Features.UserOperationClaims.Queries.GetListUserOperationClaim;
 using Core.Application.Requests;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CodingIoDevs.WebAPI.Controllers
+namespace CodingIoDevs.WebAPI.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class UserOperationClaimsController : BaseController
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UserOperationClaimsController : BaseController
+    [HttpGet]
+    public async Task<IActionResult> Get([FromQuery] PageRequest pageRequest)
     {
-        [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] PageRequest pageRequest)
+        GetListUserOperationClaimQuery getListUserOperationClaimQuery = new()
         {
-            GetListUserOperationClaimQuery getListUserOperationClaimQuery = new()
-            {
-                PageRequest = pageRequest
-            };
+            PageRequest = pageRequest
+        };
 
-            UserOperationClaimListModel result = await Mediator.Send(getListUserOperationClaimQuery);
+        UserOperationClaimListModel result = await Mediator.Send(getListUserOperationClaimQuery);
 
-            return Ok(result);
-
-        }
-
-        [HttpGet("{userId}")]
-        public async Task<IActionResult> GetByUserId([FromQuery] PageRequest pageRequest, [FromRoute] Guid userId)
-        {
-            GetByUserIdUserOperationClaimQuery getByUserIdUserOperationClaimQuery = new()
-            {
-                PageRequest = pageRequest,
-                UserId = userId
-            };
-
-            UserOperationClaimSingleModel result = await Mediator.Send(getByUserIdUserOperationClaimQuery);
-
-            return Ok(result);
-
-        }
-
-
-        [HttpPost]
-        public async Task<IActionResult> Add([FromBody] CreateUserOperationClaimCommand createUserOperationClaimCommand)
-        {
-            CreatedUserOperationClaimDto result = await Mediator.Send(createUserOperationClaimCommand);
-
-            return Created("", result);
-
-        }
-
-        [HttpDelete]
-        public async Task<IActionResult> Delete([FromBody] DeleteUserOperationClaimCommand deleteUserOperationClaimCommand)
-        {
-            DeletedUserOperationClaimDto result = await Mediator.Send(deleteUserOperationClaimCommand);
-
-            return Ok(result);
-
-        }
+        return Ok(result);
 
     }
+
+    [HttpGet("{userId}")]
+    public async Task<IActionResult> GetByUserId([FromQuery] PageRequest pageRequest, [FromRoute] Guid userId)
+    {
+        GetByUserIdUserOperationClaimQuery getByUserIdUserOperationClaimQuery = new()
+        {
+            PageRequest = pageRequest,
+            UserId = userId
+        };
+
+        UserOperationClaimSingleModel result = await Mediator.Send(getByUserIdUserOperationClaimQuery);
+
+        return Ok(result);
+
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> Add([FromBody] CreateUserOperationClaimCommand createUserOperationClaimCommand)
+    {
+        CreatedUserOperationClaimDto result = await Mediator.Send(createUserOperationClaimCommand);
+
+        return Created("", result);
+
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> Delete([FromBody] DeleteUserOperationClaimCommand deleteUserOperationClaimCommand)
+    {
+        DeletedUserOperationClaimDto result = await Mediator.Send(deleteUserOperationClaimCommand);
+
+        return Ok(result);
+
+    }
+
 }

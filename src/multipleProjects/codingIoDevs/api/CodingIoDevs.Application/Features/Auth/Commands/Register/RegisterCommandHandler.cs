@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using CodingIoDevs.Application.Features.Auth.Dtos;
+﻿using CodingIoDevs.Application.Features.Auth.Dtos;
 using CodingIoDevs.Application.Features.Auth.Rules;
 using CodingIoDevs.Application.Services.AuthService;
 using CodingIoDevs.Application.Services.Repositories;
 using Core.Security.Entities;
-using Core.Security.Enums;
 using Core.Security.Hashing;
 using Core.Security.JWT;
 using MediatR;

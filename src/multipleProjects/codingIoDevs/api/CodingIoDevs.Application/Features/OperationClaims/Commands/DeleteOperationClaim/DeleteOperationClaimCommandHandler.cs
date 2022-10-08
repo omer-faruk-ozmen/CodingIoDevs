@@ -1,6 +1,5 @@
 ﻿using CodingIoDevs.Application.Features.OperationClaims.Dtos;
 using CodingIoDevs.Application.Services.Repositories;
-using FluentValidation;
 using MediatR;
 
 namespace CodingIoDevs.Application.Features.OperationClaims.Commands.DeleteOperationClaim;

@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
 
-namespace CodingIoDevs.Application.Features.OperationClaims.Commands.CreateOperationClaim
+namespace CodingIoDevs.Application.Features.OperationClaims.Commands.CreateOperationClaim;
+
+public class CreateOperationClaimCommandValidator : AbstractValidator<CreateOperationClaimCommand>
 {
-    public class CreateOperationClaimCommandValidator : AbstractValidator<CreateOperationClaimCommand>
+    public CreateOperationClaimCommandValidator()
     {
-        public CreateOperationClaimCommandValidator()
-        {
-            RuleFor(p => p.RoleName).NotEmpty().MinimumLength(2);
-        }
+        RuleFor(p => p.RoleName).NotEmpty().MinimumLength(2);
     }
 }
