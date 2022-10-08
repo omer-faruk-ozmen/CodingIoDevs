@@ -16,6 +16,7 @@ public class DeleteOperationClaimCommandHandler : IRequestHandler<DeleteOperatio
 
     public async Task<DeletedOperationClaimDto> Handle(DeleteOperationClaimCommand request, CancellationToken cancellationToken)
     {
+
         await _operationClaimRepository.DeleteAsync(request.OperationClaimId);
 
         return new();
