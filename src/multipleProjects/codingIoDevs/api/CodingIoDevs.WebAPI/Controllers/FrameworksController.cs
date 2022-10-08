@@ -5,6 +5,7 @@ using CodingIoDevs.Application.Features.Frameworks.Dtos;
 using CodingIoDevs.Application.Features.Frameworks.Models;
 using CodingIoDevs.Application.Features.Frameworks.Queries.GetListFramework;
 using Core.Application.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodingIoDevs.WebAPI.Controllers;
@@ -14,6 +15,7 @@ namespace CodingIoDevs.WebAPI.Controllers;
 public class FrameworksController : BaseController
 {
     [HttpGet]
+    [Authorize(Roles = "admin,moderator")]
     public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
     {
         GetListFrameworkQuery getListFrameworkQuery = new() { PageRequest = pageRequest };

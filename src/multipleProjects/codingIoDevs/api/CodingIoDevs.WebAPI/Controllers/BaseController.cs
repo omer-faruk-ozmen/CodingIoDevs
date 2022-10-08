@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.IIS.Core;
 
 namespace CodingIoDevs.WebAPI.Controllers;
 
@@ -16,5 +17,4 @@ public class BaseController : ControllerBase
         if (Request.Headers.ContainsKey("X-Forwarded-For")) return Request.Headers["X-Forwarded-For"];
         return HttpContext.Connection.RemoteIpAddress?.MapToIPv4().ToString();
     }
-
 }

@@ -5,12 +5,15 @@ using CodingIoDevs.Application.Features.UserOperationClaims.Models;
 using CodingIoDevs.Application.Features.UserOperationClaims.Queries.GetByUserIdUserOperationClaim;
 using CodingIoDevs.Application.Features.UserOperationClaims.Queries.GetListUserOperationClaim;
 using Core.Application.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace CodingIoDevs.WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize(Roles = "admin,moderator")]
 public class UserOperationClaimsController : BaseController
 {
     [HttpGet]

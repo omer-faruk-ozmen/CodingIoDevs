@@ -3,6 +3,7 @@ using CodingIoDevs.Persistence.Extensions;
 using Core.CrossCuttingConcerns.Exceptions;
 using Core.Security;
 using Core.Security.Encryption;
+using Core.Security.Entities;
 using Core.Security.JWT;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
