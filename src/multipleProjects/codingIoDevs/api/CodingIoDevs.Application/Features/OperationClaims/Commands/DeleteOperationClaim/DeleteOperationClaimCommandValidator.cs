@@ -11,7 +11,7 @@ namespace CodingIoDevs.Application.Features.OperationClaims.Commands.DeleteOpera
     {
         public DeleteOperationClaimCommandValidator()
         {
-
+            RuleFor(p => p.OperationClaimId).NotEmpty();
         }
     }
 }
