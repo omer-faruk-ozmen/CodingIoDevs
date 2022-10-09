@@ -11,10 +11,10 @@ namespace CodingIoDevs.WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-[Authorize(Roles = "admin,moderator")]
 public class OperationClaimsController : BaseController
 {
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> Get([FromQuery] PageRequest pageRequest)
     {
         GetListOperationClaimQuery getListOperationClaimQuery = new()

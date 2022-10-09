@@ -6,9 +6,11 @@ using CodingIoDevs.Application.Features.ProgrammingLanguages.Rules;
 using CodingIoDevs.Application.Features.UserLinks.Rules;
 using CodingIoDevs.Application.Features.UserOperationClaims.Rules;
 using CodingIoDevs.Application.Services.AuthService;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CodingIoDevs.Application.Extensions;
@@ -27,10 +29,13 @@ public static class ApplicationServiceRegistration
         services.AddScoped<OperationClaimBusinessRules>();
         services.AddScoped<UserOperationClaimBusinessRules>();
 
+        services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 
         services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
 
 
         services.AddScoped<IAuthService, AuthManager>();
